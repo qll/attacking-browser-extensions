@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- Theme reskinning TLS error pages
+
+- chrome/browser/aboutNetError.css for main netError page
+- chrome/global/icons/warning-16.png to replace the warning icon
+- chrome/global/global.css for adding exceptions
+-->
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>theme-reskin-errors@iceqll.eu</em:id>
+    <em:version>1.0</em:version>
+    <!-- 4 is a theme -->
+    <em:type>4</em:type>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>29.0</em:minVersion>
+        <em:maxVersion>50.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:name>TLS Reskin</em:name>
+    <em:internalName>theme-reskin-errors</em:internalName>
+    <em:description>Reskins TLS errors to look benign</em:description>
+    <em:creator>qll</em:creator>
+    <em:homepageURL>http://iceqll.eu/</em:homepageURL>
+  </Description>
+</RDF>

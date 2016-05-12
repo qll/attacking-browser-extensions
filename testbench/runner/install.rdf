@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+
+    Firefox RDF file
+
+-->
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>tests@iceqll.eu</em:id>
+    <em:version>1.0</em:version>
+    <!-- type = 2 marks this as a proper extension -->
+    <em:type>2</em:type>
+    <!-- marks this as restartless extension -->
+    <em:bootstrap>true</em:bootstrap>
+    <!-- unpacks this extension in any case -->
+    <em:unpack>true</em:unpack>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>29.0</em:minVersion>
+        <em:maxVersion>50.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:name>Extension Tests</em:name>
+    <em:internalName>tests</em:internalName>
+    <em:description>
+        Please allow this Add-on in order to start testing
+    </em:description>
+    <em:creator>qll</em:creator>
+    <em:homepageURL>http://iceqll.eu/</em:homepageURL>
+  </Description>
+</RDF>

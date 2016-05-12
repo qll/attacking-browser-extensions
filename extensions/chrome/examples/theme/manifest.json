@@ -1,0 +1,47 @@
+{
+  "manifest_version": 2,
+
+  "name": "Exemplary theme",
+  "description": "Shows the possibilities of a theme",
+  "version": "1.0",
+
+  "theme": {
+    "images" : {
+      // "theme_frame" : "icon.png",
+      //   "theme_frame_overlay" : "images/theme_frame_stripe.png",
+      //   "theme_toolbar" : "images/theme_toolbar_camo.png",
+      //   "theme_ntp_background" : "images/theme_ntp_background_norepeat.png",
+      //   "theme_ntp_attribution" : "images/attribution.png"
+    },
+
+
+    "colors" : {
+      "frame" : [11, 11, 11],
+      "frame_inactive": [22, 22, 22],
+      "frame_incognito": [33, 33, 33],
+      "frame_incognito_inactive": [44, 44, 44],
+      "toolbar" : [11, 11, 11],
+      "tab_text" : [200, 200, 200],
+      "tab_background_text" : [180, 180, 180],
+      "bookmark_text" : [255, 0, 0],
+      "ntp_background" : [255, 0, 0],
+      "ntp_text" : [255, 0, 0],
+      "ntp_link" : [255, 0, 0],
+      "ntp_link_underline": [0, 0, 0],
+      "ntp_header": [255, 0, 0],
+      "ntp_section" : [11, 11, 11],
+      "ntp_section_text" : [200, 200, 200],
+      "ntp_section_link" : [255, 255, 255],
+      "control_background" : [11, 11, 11],
+      "button_background" : [255, 0, 0]
+    },
+
+    "tints" : {
+      "buttons" : [1, 1, 0.5]
+    },
+
+    "properties" : {
+      "ntp_background_alignment" : "bottom"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Controlled Add-on SDK Extension",
+  "name": "add-on-sdk-controlled",
+  "version": "0.0.1",
+  "description": "Shows off remote control",
+  "main": "index.js",
+  "author": "qll",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<title>Redirect to chrome-extension:// URIs of Apps</title>
+<h1>Redirect to chrome-extension:// URIs of Apps</h1>
+<p>
+    A 302 redirect can not only redirect to an Extension's
+    chrome-extension://-URL, it can navigate to URLs of Chrome Apps, too. This
+    is a manual test since there have to be special circumstances given for this
+    to work. First and foremost, the link has to be loaded in a fresh tab which
+    is why a link with target="_blank" works perfectly. Secondly there are heavy
+    restrictions on the URL making connecting back for telling the test runner
+    the result very hard.
+</p>
+<p>
+    <a href="redir.py" target="_blank">Click me</a>
+</p>

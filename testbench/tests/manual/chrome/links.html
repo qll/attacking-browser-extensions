@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<title>Link Interaction</title>
+<h1>Link Interaction</h1>
+<p>
+    While normally clicking either of the two links below is blocked by Chrome,
+    a right click and "Open in a new Tab" or "Open in a new window" works for
+    the first one. Note, that &lt;Ctrl+Click&gt; or &lt;Ctrl+Shift+Click&gt;
+    does not work although you might think it invokes the exact same
+    functionality.
+</p>
+<ul>
+    <li>
+        <a href="$CHROME_TEST_URL/manual/success.html" data-globattr="href">
+            Right click me (chrome-extension pointing to extension)
+        </a>. This works (even if resources are not web-accessible).
+    </li>
+    <li>
+        <a href="$CHROME_APP_URL/manual/success.html" data-globattr="href">
+            Right click me (chrome-extension pointing to app)
+        </a>. This does not work.
+    </li>
+    <li>
+        <a href="$FILE_TEST_URL/manual/success.html" data-globattr="href">
+            Right click me (file)
+        </a>. This does not work.
+    </li>
+</ul>
+<script src="../../resources/testing.js"></script>

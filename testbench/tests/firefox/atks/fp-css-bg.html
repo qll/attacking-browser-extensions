@@ -1,0 +1,17 @@
+<style>
+.abusable {
+    background: url(fp-css-bg.py);
+}
+</style>
+<link rel="stylesheet" href="chrome://test-accessible/content/tests/firefox/atks/fp-css-bg.css">
+<div class="abusable"></div>
+<script src="../../resources/testing.js"></script>
+<script>
+test(() => {
+    return new Promise((resolve, reject) => {
+        window.succeedTest = resolve;
+        window.failTest = reject;
+        testBench.include('fp-css-bg-verify.py');
+    });
+});
+</script>

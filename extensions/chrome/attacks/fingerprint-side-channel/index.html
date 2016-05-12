@@ -1,0 +1,32 @@
+<script>
+var TIMEOUT = 1000;
+var REDIRECTOR = 'redirect.php?to=';
+
+
+function checkForExtension(id, name) {
+    var ext_url = 'chrome-extension://' + id + '/manifest.json';
+    //
+    // Step 1: Open
+    //
+    var handle = window.open(REDIRECTOR + encodeURIComponent(ext_url));
+    setTimeout(function() {
+        //
+        // Step 2: Redirect
+        //
+        handle.location = 'blank.html';
+        setTimeout(function() {
+            try {
+                //
+                // Step 3: Access
+                //
+                handle.document;
+                document.body.innerHTML = '<h1>' + name + ' is not active :(</h1>';
+            } catch (error) {
+                document.body.innerHTML = '<h1>' + name + ' is active :)</h1>';
+            }
+        handle.close();
+        }, TIMEOUT);
+    }, TIMEOUT);
+}
+</script>
+<button onclick="checkForExtension('gcbommkclmclpchllfjekcdonpmejbdp', 'HTTPS Everywhere');">Check for HTTPS Everywhere</button>

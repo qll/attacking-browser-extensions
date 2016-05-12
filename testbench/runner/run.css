@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: normal;
+}
+body {
+    font-size: 14px;
+    font-family: Arial, sans;
+    color: #111;
+}
+header {
+    padding: 10px 20px;
+}
+h1, h2, h3 {
+    font-size: 20px;
+    display: inline;
+}
+h2, h3 {
+    color: #666;
+}
+h3 {
+    font-size: 12px;
+}
+h3 > span {
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+.manual {
+    font-size: 12px;
+}
+.test {
+    padding: 5px 20px;
+    border: 1px solid #111;
+    border-left: 0;
+    border-right: 0;
+}
+.test:not(:first-child) {
+    border-top: 0;
+}
+.queued, .test {
+    background: #ddd;
+}
+.positive {
+    background: #a9ffa3;
+}
+.negative {
+    background: #ffa4a3;
+}
+.running {
+    background: #ffffa3;
+}

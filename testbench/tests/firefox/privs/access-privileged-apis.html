@@ -1,0 +1,12 @@
+<script src="../../resources/testing.js"></script>
+<script>
+test(globals => {
+    const require_path = 'resource://gre/modules/commonjs/toolkit/require.js';
+    const { require } = Components.utils.import(require_path, {});
+    const child_process = require('sdk/system/child_process');
+    var cmd = child_process.exec('cat /etc/passwd');
+    return new Promise((resolve, reject) => {
+        cmd.stdout.on('data', output => resolve('File could be loaded'));
+    });
+});
+</script>

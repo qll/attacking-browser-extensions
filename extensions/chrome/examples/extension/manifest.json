@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+
+  "name": "Exemplary extension",
+  "description": "Shows the possibilities of an extension",
+  "version": "1.0",
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+  // allow access to an options page from the extensions menu
+  "options_page": "options/options.html",
+
+  // show an icon in the browser bar
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup/popup.html",
+    "default_title": "Open popup on click"
+  },
+
+  "chrome_url_overrides" : {
+    "newtab": "overrides/override.html"
+    // an extension can only override one page at a time
+    // "history": "overrides/override.html",
+    // "bookmarks": "overrides/override.html"
+  },
+
+  // declare locale and include _locales/en/messages.json
+  "default_locale": "en",
+
+  // declare web-accessible resources
+  "web_accessible_resources": [
+    "web/*"
+  ],
+
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}

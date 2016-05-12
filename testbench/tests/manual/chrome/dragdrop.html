@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<title>Link Drag &amp; Drop</title>
+<h1>Link Drag &amp; Drop</h1>
+<p>
+    Instead of being clicked, links can be dragged to the navigation bar to
+    navigate to them. In some cases it works and in some it doesn't.
+</p>
+<ul>
+    <li>
+        <a href="$CHROME_TEST_URL/manual/success.html" data-globattr="href">
+            Drag me to your navigation bar (chrome-extension pointing to
+            extension)
+        </a>. This works (even if resources are not web-accessible).
+    </li>
+    <li>
+        <a href="$CHROME_APP_URL/manual/success.html" data-globattr="href">
+            Drag me to your navigation bar (chrome-extension pointing to
+            app)
+        </a>. This does not work.
+    </li>
+    <li>
+        <a href="$FILE_TEST_URL/manual/success.html" data-globattr="href">
+            Drag me to your navigation bar (file)
+        </a>. This does not work.
+    </li>
+    <li>
+        Drag the content of this input box to the navigation bar (chrome-extension pointing to extension):
+        <input readonly value="$CHROME_TEST_URL/manual/success.html"
+               onfocus="this.select()" data-globattr="value">. This works.
+    </li>
+    <li>
+        Drag the content of this input box to the navigation bar (chrome-extension pointing to app):
+        <input readonly value="$CHROME_APP_URL/manual/success.html"
+               onfocus="this.select()" data-globattr="value">. This does not work.
+    </li>
+    <li>
+        Drag the content of this input box to the navigation bar (file):
+        <input readonly value="$FILE_TEST_URL/manual/success.html"
+               onfocus="this.select()" data-globattr="value">.  This works.
+    </li>
+</ul>
+<script src="../../resources/testing.js"></script>

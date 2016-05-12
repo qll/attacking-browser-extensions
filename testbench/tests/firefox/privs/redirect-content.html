@@ -1,0 +1,9 @@
+<script src="../../resources/testing.js"></script>
+<script>
+test(globals => {
+    const url = globals.FF_CONTENT_URL + '/firefox/privs/redirect-content.target.html#' + location.href;
+    window.location = url;
+    // make the initial page wait indefinitely
+    return new Promise(() => {});
+});
+</script>

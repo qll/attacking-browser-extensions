@@ -1,0 +1,11 @@
+<script src="../../resources/testing.js"></script>
+<script>
+test(globals => {
+    const url = globals.FF_ACCESSIBLE_URL + '/firefox/atks/fp-objleak.js';
+    return testBench.include(url).then(() => {
+        if (typeof globalObject === 'undefined') {
+            throw 'Leak not visible in JS scope';
+        }
+    });
+});
+</script>

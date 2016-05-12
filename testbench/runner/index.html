@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<title>Testbench</title>
+<link rel="stylesheet" href="run.css">
+<header>
+    <h1>Extension Tests.</h1>
+    <h2>
+        (<span id="finished">0</span>/<span id="total">0</span>).
+    </h2>
+    <h3>
+        states:
+        <span class="queued">queued</span>,
+        <span class="running">running</span>,
+        <span class="positive">matches description</span>,
+        <span class="negative">deviates from description</span>
+        ... 
+    </h3>
+    <a href="$WEB_TEST_URL/manual/$BROWSER/index.html" class="manual"
+       data-globattr="href" target="_blank">
+        Manual Tests
+    </a>
+</header>
+<main></main>
+<script src="tests/resources/testing.js"></script>
+<script src="run.js"></script>

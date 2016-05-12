@@ -1,0 +1,17 @@
+<script src="../../resources/testing.js"></script>
+<script>
+test(() => {
+    return new Promise((resolve, reject) => {
+        const iframe = document.createElement('iframe');
+        iframe.onload = () => {
+            // verify the written file
+            window.succeedTest = resolve;
+            window.failTest = reject;
+            testBench.include('csp-file-write-verify.py');
+        };
+        // this will attempt to write a file with CSP
+        iframe.src = 'csp-file-write.py';
+        document.body.appendChild(iframe);
+    });
+});
+</script>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<title>Fun Game!</title>
+<style>
+body {
+    background: #f8f8f8;
+}
+#btn-game {
+    display: none;
+    position: absolute;
+}
+h1 {
+    display: none;
+    text-align: center;
+    padding-top: 20%;
+}
+</style>
+<h1>Finished!</h1>
+<button id="btn-start">Start the game!</button>
+<button id="btn-game">Click me (2)</button>
+<script>
+(function() {
+'use strict';
+
+
+const CLICKJACK_URL = 'chrome-extension://gighmmpiobklfepjocnamgkkbiglidom/button/popup.html';
+const CLICK_POSITIONS = [
+    [4, 6],
+    [59, 200],
+    [150, 40],
+    [75, 75],
+];
+const startBtnNode = document.querySelector('#btn-start');
+const gameBtnNode = document.querySelector('#btn-game');
+const endMsgNode = document.querySelector('h1');
+
+
+function show(node) {
+    node.style.display = 'block';
+}
+function hide(node) {
+    node.style.display = 'none';
+}
+function setText(node, text) {
+    node.textContent = text;
+}
+function setPosition(node, top, left) {
+    node.style.top = top + 'px';
+    node.style.left = left + 'px';
+}
+
+
+function next(windowHandle, nextId) {
+    if (typeof CLICK_POSITIONS[nextId] === 'undefined') {
+        setPosition(gameBtnNode, 47, 5);
+        setText(gameBtnNode, 'Click here (2)');
+        gameBtnNode.onclick = () => {
+            windowHandle.focus();
+            setTimeout(() => {
+               windowHandle.close();
+               hide(gameBtnNode);
+               show(endMsgNode);
+            }, 0);
+        };
+        return;
+    }
+
+    let clickCount = 3;
+    gameBtnNode.onclick = () => {
+        clickCount--;
+        setText(gameBtnNode, 'Click here (' + clickCount + ')');
+        if (clickCount < 1) {
+            next(windowHandle, nextId + 1);
+        }
+    };
+    gameBtnNode.onclick();
+    let top = CLICK_POSITIONS[nextId][0];
+    let left = CLICK_POSITIONS[nextId][1];
+    setPosition(gameBtnNode, top, left);
+}
+
+
+startBtnNode.onclick = () => {
+    hide(startBtnNode);
+    show(gameBtnNode);
+    let windowHandle = window.open(CLICKJACK_URL);
+    alert('Starting the game! DOUBLECLICK all buttons as fast as you can!');
+    next(windowHandle, 0);
+};
+
+
+})();
+</script>

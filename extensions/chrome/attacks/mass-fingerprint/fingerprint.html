@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<title>foo ba</title>
+<form style="display:inline">
+    <input type="text" id="extid" placeholder="extension id">
+    <input type="submit" value="Check if active">
+</form>
+<b>or</b>
+<button id="test-top">Check for popular extensions</button>
+<pre id="results"></pre>
+<script>
+(function() {
+'use strict';
+
+
+const TIMEOUT = 1000;
+const REDIRECTOR = 'https://c.iceqll.eu/poc/redir/redir.php?to=';
+const TOP_EXTENSIONS = {
+    'gcbommkclmclpchllfjekcdonpmejbdp': 'HTTPS Everywhere',
+    'mlomiejdfkolichcflejclcbmpeaniij': 'Ghostery',
+    'pkehgijcmpdhfbdbbnkijodmdjhbjlgp': 'Privacy Badger',
+    'cfhdojbkjhnklbpkdaibdccddilifddb': 'Adblock Plus',
+    'gighmmpiobklfepjocnamgkkbiglidom': 'AdBlock',
+    'cjpalhdlnbpafiamejdnhcphjbkeiagm': 'uBlock Origin',
+    'nckgahadagoaajjgafhacjanaoiihapd': 'Google Hangouts',
+    'aapbdbdomjkkjkaonfhkkikfgjllcleb': 'Google Translate',
+    'boadgeojelhgndaghljhdicfkmllpafd': 'Google Cast',
+    'mgijmajocgfcbeboacabfgobmjgjcoja': 'Google Dictionary',
+};
+
+
+let resultsNode = document.querySelector('#results');
+let singleCheckFormNode = document.querySelector('form');
+let extIdNode = document.querySelector('#extid');
+let testTopNode = document.querySelector('#test-top');
+
+
+/** Prevent pop-up from gaining focus. Could be better. */
+function preventFocusOnce() {
+    window.document.body.onblur = () => {
+        alert('Starting test');
+        window.document.body.onblur = () => {};
+    };
+}
+
+
+/** Check for an extension. */
+function checkExtension(id) {
+    return new Promise((resolve, reject) => {
+        let ext_url = 'chrome-extension://' + id + '/manifest.json';
+        console.debug('Step 1 - Open ' + ext_url);
+        preventFocusOnce();
+        let handle = window.open(REDIRECTOR + encodeURIComponent(ext_url));
+        setTimeout(() => {
+            console.debug('Step 2 - Open ' + ext_url + ' again');
+            handle.location = ext_url;
+            setTimeout(() => {
+                console.debug('Step 3 - Attempt redirection to fingerprint.html');
+                handle.location = 'fingerprint.html';
+                setTimeout(() => {
+                    try {
+                        handle.document;
+                        console.debug(id + ' is not active.');
+                        handle.close();
+                        reject();
+                    } catch (error) {
+                        console.debug(id + ' is active!');
+                        handle.close();
+                        resolve();
+                    }
+                }, TIMEOUT);
+            }, TIMEOUT);
+        }, TIMEOUT);
+    });
+}
+
+
+singleCheckFormNode.onsubmit = (event) => {
+    event.preventDefault();
+    let extId = extIdNode.value;
+    checkExtension(extId).then(
+        () => resultsNode.textContent = extId + ' is active!\n',
+        () => resultsNode.textContent = extId + ' is not active.\n'
+    );
+};
+
+
+testTopNode.onclick = () => {
+    resultsNode.textContent = '';
+    for (let id in TOP_EXTENSIONS) {
+        checkExtension(id).then(
+            () => {resultsNode.textContent += '+ ' + TOP_EXTENSIONS[id] + ' is installed and active!\n'},
+            () => {resultsNode.textContent += '- ' + TOP_EXTENSIONS[id] + ' is not installed or active.\n'}
+        );
+    }
+};
+
+
+})();
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<title>Fingerprinting: Via CSS Font</title>
+<h1>Fingerprinting: Via CSS Font</h1>
+<p>
+    It is possible to fingerprint an Add-on by styling content it adds to the
+    DOM with an external font. The request for the  font load can be detected on
+    the server side. Automatically testing this failed for one reason: The font
+    seems not to be loaded until somebody looks at it. You can see the request
+    for addon_xyz_is_active in your browsers network tab (CTRL+Shift+Q).
+</p>
+<script src="../../resources/testing.js"></script>
+<div class="existing"></div>
+<div class="nonexisting"></div>
+<script>
+testBench.init.then(globals => {
+    // we do this in JavaScript to avoid hard-coding the FF_ACCESSIBLE_URL
+    const css = `
+    @import url(${globals.FF_ACCESSIBLE_URL}/manual/firefox/fp-css-font.css);
+    @font-face {
+        font-family: AddonXyzActive;
+        src: url(addon_xyz_is_active);
+    }
+    @font-face {
+        font-family: AddonFooActive;
+        src: url(addon_foo_is_active);
+    }
+    .existing::after {
+        font-family: AddonXyzActive;
+    }
+    .nonexisting::after {
+        font-family: AddonFooActive;
+    }
+    `;
+    const style = document.createElement('style');
+    style.textContent = css;
+    document.head.appendChild(style);
+});
+</script>

@@ -1,0 +1,1 @@
+// nothing going on here but apps require background scripts

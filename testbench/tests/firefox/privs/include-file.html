@@ -1,0 +1,7 @@
+<script src="../../resources/testing.js"></script>
+<script>
+test(globals => {
+    const url = globals.FILE_TEST_URL + '/firefox/privs/include-me.js';
+    return testBench.include(url);
+});
+</script>

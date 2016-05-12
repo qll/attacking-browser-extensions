@@ -1,0 +1,4 @@
+skin    browser         sample   chrome/browser/
+skin    communicator    sample   chrome/communicator/
+skin    global          sample   chrome/global/
+skin    mozapps         sample   chrome/mozapps/

@@ -1,0 +1,2 @@
+locale    locale-privesc    locale-privesc    files/
+override  chrome://mozapps/content/extensions/extensions.xul  chrome://locale-privesc/locale/privesc.html

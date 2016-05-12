@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<title>SQLi Sample</title>
+<script>
+
+try {
+
+
+function execAsync(statement) {
+    statement.executeAsync({
+        handleResult: function(aResultSet) {
+            for (var row = aResultSet.getNextRow(); row; row = aResultSet.getNextRow()) {
+                var value = row.getResultByIndex(0);
+                console.log(value);
+            }
+        },
+        handleError: function(aError) {
+            alert('SQL Error: ' + aError.message);
+        },
+        handleCompletion: function(aReason) {}
+    });
+}
+
+
+/*
+
+//
+// Method 1
+//
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+
+const fileClass = Cc['@mozilla.org/file/local;1'];
+var localFile = fileClass.createInstance(Ci.nsILocalFile);
+localFile.initWithPath('/tmp/database.sqlite');
+const serviceClass = Cc['@mozilla.org/storage/service;1'];
+const service = serviceClass.getService(Ci.mozIStorageService);
+var database = service.openDatabase(localFile);
+
+*/
+
+
+//
+// Method 2
+//
+Components.utils.import('resource://gre/modules/Services.jsm');
+Components.utils.import('resource://gre/modules/FileUtils.jsm');
+var localFile = FileUtils.File('/tmp/database2.sqlite');
+var database = Services.storage.openDatabase(localFile);
+
+
+database.executeSimpleSQL('SELECT 1; CREATE TABLE IF NOT EXISTS simplesql (column_name INTEGER)');
+
+
+var statement = database.createStatement('SELECT 1 UNION SELECT 2; CREATE TABLE IF NOT EXISTS executeasync (column_name INTEGER)');
+console.log('Load asyncstatement');
+execAsync(statement);
+
+console.log('Load sync');
+while (statement.executeStep()) {
+    console.log(statement.row[0]);
+}
+
+console.log('Load asyncasyncstatement');
+var statement = database.createAsyncStatement('SELECT 1 UNION SELECT 2; CREATE TABLE IF NOT EXISTS executeasyncasync (column_name INTEGER)');
+execAsync(statement);
+
+
+} catch (error) {
+
+
+alert(error);
+
+
+}
+
+
+</script>

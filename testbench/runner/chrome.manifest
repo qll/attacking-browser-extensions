@@ -1,0 +1,11 @@
+#
+# Firefox manifest file
+#
+content     test             ./
+skin        test    tests    ./
+locale      test    tests    ./
+resource    test             ./
+
+
+# web-accessible origin
+content     test-accessible    ./    contentaccessible=yes

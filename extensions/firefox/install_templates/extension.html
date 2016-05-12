@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<title>Install extension</title>
+<a href="/install" hash="sha1:{{ XPIHASH }}">Click here to install!</a>
+<script>
+document.querySelector('a').onclick = function(event) {
+    window.InstallTrigger.install({
+        XXX: {
+            URL: event.target.href,
+            Hash: event.target.getAttribute('hash'),
+            toString: function() { return this.URL; },
+        }
+    });
+    event.preventDefault();
+    return false;
+};
+</script>

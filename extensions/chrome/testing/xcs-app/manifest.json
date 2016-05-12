@@ -1,0 +1,25 @@
+{
+  "name": "Testing App",
+  "description": "Chrome App to test various injection contexts",
+  "version": "0.1",
+  "manifest_version": 2,
+
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+
+  "sandbox": {
+    "pages": ["window/sandbox.html"]
+  },
+   "webview": {
+    "partitions": [
+      {
+        "name": "storage",
+        "accessible_resources": ["window/foo.html"]
+      }
+  ]},
+  "icons": { "16": "icon.png", "128": "icon.png" },
+  "permissions": ["webview", "storage", "desktopCapture"]
+}

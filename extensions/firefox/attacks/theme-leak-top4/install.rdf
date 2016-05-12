@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>theme-leak-top4@iceqll.eu</em:id>
+    <em:version>1.0</em:version>
+    <!-- type = 4 marks this as a theme -->
+    <em:type>4</em:type>
+    <em:targetApplication>
+      <Description>
+        <!-- id of firefox -->
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>29.0</em:minVersion>
+        <!-- max stable version at this time -->
+        <em:maxVersion>50.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <em:name>Leakage Example</em:name>
+    <em:internalName>theme-leak-top4</em:internalName>
+    <em:description>Fingerprint the top 4 add-ons</em:description>
+    <em:creator>qll</em:creator>
+    <em:homepageURL>http://iceqll.eu/</em:homepageURL>
+  </Description>      
+</RDF>

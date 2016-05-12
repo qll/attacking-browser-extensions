@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<title>Open Extension Windows</title>
+<h1>Open Extension Windows</h1>
+<p>
+    When clicked, the following button will attempt to open a new window with a
+    non-web-accessible resource of an extension. This will fail, unless you are
+    on a file-URI. Visit the following URL to test from the file protocol:
+</p>
+<p>
+    <input value="$FILE_TEST_URL/manual/chrome/open.html" readonly data-globattr="value">
+</p>
+<button id="ext">Click me to open an extension url</button>
+<script src="../../resources/testing.js"></script>
+<script>
+testBench.init.then(globals => {
+    document.querySelector('#ext').onclick = () => {
+        window.open(globals.CHROME_TEST_URL + '/manual/success.html');
+    };
+});
+</script>

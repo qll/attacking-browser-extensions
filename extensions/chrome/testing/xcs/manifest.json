@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Testing Extension",
+  "description": "Features various kinds of contexts to inject to",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup/popup.html",
+    "default_title": "Open popup on click"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://iceqll.eu/*"],
+      "js": ["content/content.js"]
+    }
+  ],
+  "background": {
+    "page": "background/background.html"
+  },
+  "permissions": ["tabs", "proxy", "<all_urls>"]
+}

@@ -1,0 +1,6 @@
+{
+    "test": {
+        "message": "body::after {content:\"foo\"}",
+        "description": "Test"
+    }
+}

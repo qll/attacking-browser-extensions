@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<window id="test"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="XUL">
+    <!-- since fixing testing.js to work with a XML DOM is too much of a hassle,
+         do it the easy way and iframe a HTML file -->
+    <iframe src="xul.html"></iframe>
+</window>

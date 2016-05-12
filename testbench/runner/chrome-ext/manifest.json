@@ -1,0 +1,12 @@
+{
+  //
+  // Chrome/Chromium manifest file
+  //
+  "manifest_version": 2,
+  "name": "Test Helper",
+  "description": "A test helper which is used as the second extension",
+  "version": "1.0",
+  "web_accessible_resources": ["angular.min.js", "tests/chrome/privs/include-chrome-extension2-accessible-file.js"],
+  // force a persistent extension id
+  "key": "EXT1337XXXkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6MR8W/galdxnpGqBsYbqOzQb2eyW15YFjDDEMI0ZOzt8f504obNs920lDnpPD2/KqgsfjOgw2K7xWDJIj/18xUvWPk3LDkrnokNiRkA3KOx3W6fHycKL+zID7zy+xZYBuh2fLyQtWV1VGQ45iNRp9+Zo7rH86cdfgkdnWTlNSHyTLW9NbXvyv/E12bppPcEvgCTAQXgnDVJ0/sqmeiijn9tTFh03aM+R2V/21h8aTraAS24qiPCz6gkmYGC8yr6mglcnNoYbsLNYZ69zF1XHcXPduCPdPdfLlzVlKK1/U7hkA28eG3BIAMh6uJYBRJTpiGgaGdPd7YekUB8S6cy+CQIDAQAB"
+}

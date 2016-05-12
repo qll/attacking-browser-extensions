@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Test",
+  "version": "1.0",
+  "description": "Test WebExtensions",
+  "applications": {
+    "gecko": {
+      "id": "test@iceqll.eu",
+      "strict_min_version": "45.0.0"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://iceqll.eu/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": ["web/*"]
+}
